@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class NewsItem extends Component {
   render() {
-    let {title,content,url,imgUrl}=this.props
+    let {title,content,url,imgUrl,author,publishedAt}=this.props
     return (
       <>
       <div className="col-md-4" >
@@ -13,6 +13,9 @@ class NewsItem extends Component {
             <p className="card-text">
               {content ? content.length>88?content.slice(0,88)+" . . .":content:'Press "Read More" to read article'}
             </p>
+            
+            <p className="card-text"><small>By {author?author:'Unkown'}{"   "}{ new Date(publishedAt).toGMTString()}</small></p>
+
             <a href={url} target="_blank" className="btn btn-sm btn-primary">
               Read More
             </a>

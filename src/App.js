@@ -14,13 +14,13 @@ class App extends Component {
         <Router>
           <Navbar />
           <Switch>
-          <Route exact path='/' component={()=><NewsMain catergory='general' />}/>
-          <Route exact path='/business' component={()=><NewsMain catergory='business' />}/>
-          <Route exact path='/sports' component={()=><NewsMain catergory='sports' />}/>
-          <Route exact path='/entertainment' component={()=><NewsMain catergory='entertainment' />}/>
-          <Route exact path='/technology' component={()=><NewsMain catergory='technology' />}/>
-          <Route exact path='/science' component={()=><NewsMain catergory='science' />}/>
-          <Route exact path='/health' component={()=><NewsMain catergory='health' />}/>
+          <Route exact  path='/' component={()=><NewsMain category='general' />}/>
+          <Route exact  path='/business' component={()=><NewsMain category='business' />}/>
+          <Route exact  path='/sports' component={()=><NewsMain category='sports' />}/>
+          <Route exact  path='/entertainment' component={()=><NewsMain category='entertainment' />}/>
+          <Route exact  path='/technology' component={()=><NewsMain category='technology' />}/>
+          <Route exact  path='/science' component={()=><NewsMain category='science' />}/>
+          <Route exact  path='/health' component={()=><NewsMain category='health' />}/>
           
           </Switch>
         </Router>

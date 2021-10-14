@@ -36,17 +36,17 @@ class Navbar extends Component {
                     Link
                   </a>
                 </li>
-                <li class="nav-item dropdown">
-          <a class="nav-link border dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li className="nav-item dropdown">
+          <a className="nav-link border dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             News Category
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><NavLink exact activeClassName='active' className="dropdown-item"  to="/general">General</NavLink></li>
+          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><NavLink exact activeClassName='active' className="dropdown-item"  to="/">General</NavLink></li>
             <li><NavLink exact activeClassName='active' className="dropdown-item"  to="/entertainment">Entertainment</NavLink></li>
             <li><NavLink exact activeClassName='active' className="dropdown-item"  to="/sports">Sports</NavLink></li>
             <li><NavLink exact activeClassName='active' className="dropdown-item"  to="/business">Business</NavLink></li>
             <li><NavLink exact activeClassName='active' className="dropdown-item"  to="/health">Health</NavLink></li>
-            <li><NavLink exact activeClassName='active' className="dropdown-item"  to="/sceince">Sceince</NavLink></li>
+            <li><NavLink exact activeClassName='active' className="dropdown-item"  to="/science">Science</NavLink></li>
             <li><NavLink exact activeClassName='active' className="dropdown-item"  to="/technology">Technology</NavLink></li>
           </ul>
         </li>
