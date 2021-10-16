@@ -3,7 +3,7 @@ import NewsItem from "./NewsItem";
 import JsonData from "./JsonData.js";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
-import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from "react-infinite-scroll-component";
 
 class NewsMain extends Component {
   static defaultProps = {
@@ -23,6 +23,7 @@ class NewsMain extends Component {
       articles: [],
       loading: false,
       page: 1,
+      totalResults: 0,
     };
   }
   update = async () => {
@@ -76,10 +77,7 @@ class NewsMain extends Component {
     const nextHandler = async () => {
       console.log("next button is clicked ");
       // console.log(this.state.page + 1,this.state.totalResults / this.props.pageSize);
-      if (
-        this.state.page + 1 >
-        Math.ceil(this.state.totalResults / pageSize)
-      ) {
+      if (this.state.page + 1 > Math.ceil(this.state.totalResults / pageSize)) {
       } else {
         this.setState({ page: this.state.page + 1 });
         setTimeout(() => {
@@ -105,35 +103,55 @@ class NewsMain extends Component {
         // console.log(this.state);
       }
     };
+    const fetchMoreData = async () => {
+      this.setState({ page: this.state.page + 1 });
+      console.log(this.state.page);
+      let newsUrl = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=f2388b79ca5345819ff601e4b1ac42e8&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+      this.setState({ loading: true });
+      let data = await fetch(newsUrl);
+      let parsedData = await data.json();
+      console.log("parsedData in fetchMore func", parsedData);
+      this.setState({
+        articles: this.state.articles.concat(parsedData.articles),
+        totalResults: parsedData.totalResults,
+        loading: false,
+      });
+    };
     return (
       <>
         <div className="container  my-3">
           <h2>My news</h2>
           <hr />
           {this.state.loading && <Spinner />}
+            <InfiniteScroll 
+              dataLength={this.state.articles.length}
+              next={fetchMoreData}
+              hasMore={this.state.articles.length !== this.state.totalResults}
+              loader={<Spinner className='my-5' />}
+            >
           <div className="d-flex row">
-            {!this.state.loading &&
-              this.state.articles.map((currElem) => {
-                /* console.log(currElem) */
-                return (
-                  <>
-                    <NewsItem
-                      key={currElem.url}
-                      title={currElem.title}
-                      content={currElem.description}
-                      url={currElem.url}
-                      imgUrl={currElem.urlToImage}
-                      publishedAt={currElem.publishedAt}
-                      author={currElem.author}
-                      source={currElem.source}
-                      category={this.props.category}
-                    />
-                    
-                  </>
-                );
-              })}
+
+            {/* below code is for next and previous button */}
+            {/* {!this.state.loading && */}
+            {this.state.articles.map((currElem, index) => {
+              /* console.log(currElem) */
+              return (
+                <NewsItem
+                  key={currElem.url}
+                  title={currElem.title}
+                  content={currElem.description}
+                  url={currElem.url}
+                  imgUrl={currElem.urlToImage}
+                  publishedAt={currElem.publishedAt}
+                  author={currElem.author}
+                  source={currElem.source}
+                  category={this.props.category}
+                />
+              );
+            })}
           </div>
-          <div className="d-flex  container my-2 justify-content-between ">
+            </InfiniteScroll>
+          {/* <div className="d-flex  container my-2 justify-content-between ">
             <button
               className="btn btn-danger"
               onClick={prevHandler}
@@ -151,7 +169,7 @@ class NewsMain extends Component {
             >
               next &rarr;
             </button>
-          </div>
+          </div> */}
         </div>
       </>
     );
