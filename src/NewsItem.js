@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class NewsItem extends Component {
   render() {
     let { title, content, url, imgUrl, author, publishedAt,source,category} = this.props;
-    const colorForCategory=(category) => {
+    const badgeColorForCategory=(category) => {
       if (category==="sports") {
         return 'danger'
       } else if (category==="business") {
@@ -25,7 +25,7 @@ class NewsItem extends Component {
       <>
         <div className="col-md-4">
           <div className="card my-3">
-          <span className={`position-absolute top-0 end-0 translate-end-x badge rounded-pill bg-${colorForCategory(category)}`}>
+          <span className={`position-absolute top-0 end-0 translate-end-x badge rounded-pill bg-${badgeColorForCategory(category)}`}>
             {source.name}<span className="visually-hidden">unread messages</span>
           </span>
             <img
