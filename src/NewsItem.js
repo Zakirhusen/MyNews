@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 
-class NewsItem extends Component {
-  render() {
-    let { title, content, url, imgUrl, author, publishedAt,source,category} = this.props;
+const NewsItem = (props) => {
+  let { title, content, url, imgUrl, author, publishedAt,source,category} = props;
     const badgeColorForCategory=(category) => {
       if (category==="sports") {
         return 'danger'
@@ -65,8 +64,9 @@ class NewsItem extends Component {
         </div>
       </>
     );
-  }
+
+
+  
 }
 
-export default NewsItem;
-
+export default NewsItem

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
-class Navbar extends Component {
-  render() {
-    return (
+
+const Navbar = () => {
+  return (
+    <>
+      return (
       <>
         <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light">
           <div className="container-fluid">
@@ -67,8 +69,8 @@ class Navbar extends Component {
         </nav>
       </>
     );
-  }
-}
-export default Navbar;
 
-
+    </>
+  )
+      }
+export default Navbar
