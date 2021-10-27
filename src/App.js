@@ -12,6 +12,8 @@ const setProgresses = (prog) => {
   setProgress(prog);
   console.log(progress);
 };
+let apiKey=process.env.REACT_APP_NEWS_API
+
 return (
   <>
     <Router>
@@ -36,13 +38,13 @@ return (
 
       {/* usage of key- when we render samme componet with different props react cant render same comp again to distinguish key is used */}
        <Switch>
-        <Route exact path="/" ><NewsMain setProg={setProgresses} key="general" category="general" /></Route>
-        <Route exact path="/business" ><NewsMain setProg={setProgresses} key="business" category="business" /></Route>
-        <Route exact path="/sports" ><NewsMain setProg={setProgresses} key="sports" category="sports" /></Route>
-        <Route exact path="/entertainment" ><NewsMain setProg={setProgresses} key="entertainment" category="entertainment" /></Route>
-        <Route exact path="/technology" ><NewsMain setProg={setProgresses} key="technology" category="technology" /></Route>
-        <Route exact path="/science" ><NewsMain setProg={setProgresses} key="science" category="science" /></Route>
-        <Route exact path="/health" ><NewsMain setProg={setProgresses} key="health" category="health" /></Route>
+        <Route exact path="/" ><NewsMain setProg={setProgresses} apiKey={apiKey} key="general" category="general" /></Route>
+        <Route exact path="/business" ><NewsMain setProg={setProgresses} apiKey={apiKey} key="business" category="business" /></Route>
+        <Route exact path="/sports" ><NewsMain setProg={setProgresses} apiKey={apiKey} key="sports" category="sports" /></Route>
+        <Route exact path="/entertainment" ><NewsMain setProg={setProgresses} apiKey={apiKey} key="entertainment" category="entertainment" /></Route>
+        <Route exact path="/technology" ><NewsMain setProg={setProgresses} apiKey={apiKey} key="technology" category="technology" /></Route>
+        <Route exact path="/science" ><NewsMain setProg={setProgresses} apiKey={apiKey} key="science" category="science" /></Route>
+        <Route exact path="/health" ><NewsMain setProg={setProgresses} apiKey={apiKey} key="health" category="health" /></Route>
       </Switch>
     </Router>
   </>
