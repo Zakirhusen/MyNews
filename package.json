@@ -1,6 +1,6 @@
 {
-  "name": "firstssreact",
-  "homepage": "https://Zakirhusen.github.io/WebsiteHost",
+  "name": "newsapp",
+  "homepage": "https://Zakirhusen.github.io/MyNews",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

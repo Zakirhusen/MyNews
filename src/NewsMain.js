@@ -7,6 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 
 const NewsMain =(props)=> {
+  
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(1)
@@ -26,7 +27,7 @@ const NewsMain =(props)=> {
 const update = async () => {
     console.log(props.category)
     props.setProg(5)
-    let newsUrl = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=3b6e56aa9ad54372a1d51b92c41e1e45&page=${page}&pageSize=${props.pageSize}`;
+    let newsUrl = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
     console.log(newsUrl)
     props.setProg(40)
     setLoading({ loading: true });
@@ -110,7 +111,6 @@ NewsMain.defaultProps = {
   pageSize: 6,
   category: "science",
 };
-
 export default NewsMain;
 
 
